@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -11,7 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { format } from "date-fns";
+import { format, startOfToday } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
 const bookingSchema = z.object({
@@ -31,6 +31,12 @@ export function Booking() {
       notes: "",
     },
   });
+
+  const [today, setToday] = useState<Date>();
+
+  useEffect(() => {
+    setToday(startOfToday());
+  }, []);
 
   function onSubmit(values: z.infer<typeof bookingSchema>) {
     console.log(values);
@@ -65,8 +71,9 @@ export function Booking() {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                        disabled={today ? (date) => date < today || date < new Date("1900-01-01") : () => true}
                         initialFocus
+                        today={today}
                       />
                       <FormMessage />
                     </FormItem>
