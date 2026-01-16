@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "A modern e-commerce platform",
+      "imageUrl": "https://images.unsplash.com/photo-1642052503083-9b9f61e75710?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxlLWNvbW1lcmNlJTIwd2Vic2l0ZXxlbnwwfHx8fDE3Njg1OTEwOTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "e-commerce website"
+    },
+    {
+      "id": "project-2",
+      "description": "A mobile banking application",
+      "imageUrl": "https://images.unsplash.com/photo-1480694313141-fce5e697ee25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb2JpbGUlMjBhcHB8ZW58MHx8fHwxNzY4NTE1MDkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "project-3",
+      "description": "A data analytics dashboard",
+      "imageUrl": "https://images.unsplash.com/photo-1610913721979-b20ede600e63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MHx8fHwxNzY4NTU1MTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard analytics"
+    },
+    {
+      "id": "project-4",
+      "description": "A cloud infrastructure setup",
+      "imageUrl": "https://images.unsplash.com/photo-1546124404-9e7e3cac2ec1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjbG91ZCUyMHNlcnZlcnxlbnwwfHx8fDE3Njg0OTY3NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud server"
+    },
+    {
+      "id": "hero-background",
+      "description": "Abstract blue technology background",
+      "imageUrl": "https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzY4NTUyNTgyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract technology"
+    }
+  ]
 }
