@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { format, startOfToday } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -32,10 +31,10 @@ export function Booking() {
     },
   });
 
-  const [today, setToday] = useState<Date>();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setToday(startOfToday());
+    setIsClient(true);
   }, []);
 
   function onSubmit(values: z.infer<typeof bookingSchema>) {
@@ -66,16 +65,21 @@ export function Booking() {
                   control={form.control}
                   name="date"
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={today ? (date) => date < today || date < new Date("1900-01-01") : () => true}
-                        initialFocus
-                        today={today}
-                      />
-                      <FormMessage />
+                    <FormItem className="flex flex-col items-center">
+                      {isClient ? (
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          disabled={(date) =>
+                            date < startOfToday() || date < new Date("1900-01-01")
+                          }
+                          initialFocus
+                        />
+                      ) : (
+                        <div className="w-[280px] h-[345px] animate-pulse rounded-md bg-muted" />
+                      )}
+                      <FormMessage className="pt-2" />
                     </FormItem>
                   )}
                 />
