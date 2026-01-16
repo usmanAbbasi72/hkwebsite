@@ -15,7 +15,7 @@ export function Hero() {
       </div>
       
       <div className="relative z-10 container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-12 duration-1000">
+        <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-12 duration-1000">
           <h1 className="text-5xl font-extrabold tracking-tighter font-headline sm:text-6xl md:text-7xl lg:text-8xl gradient-text">
             Transform Your Digital Vision Into Reality
           </h1>
