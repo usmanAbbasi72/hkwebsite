@@ -3,7 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
@@ -28,37 +35,68 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-background/80 shadow-lg backdrop-blur-lg border-b border-white/10" : "bg-transparent"
+        isScrolled
+          ? "bg-background/80 shadow-lg backdrop-blur-lg border-b border-white/10"
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-3" prefetch={false}>
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 7L12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2L2 7V17L12 22L22 17V7L12 2Z"
+              stroke="hsl(var(--primary))"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M2 7L12 12L22 7"
+              stroke="hsl(var(--primary))"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 12V22"
+              stroke="hsl(var(--primary))"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           <span className="text-xl font-bold font-headline text-foreground">
-            HK-SoftwareHouse
+            Qonkar
           </span>
         </Link>
-        
+
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.filter(link => link.href !== '#process').map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks
+            .filter((link) => link.href !== "#process")
+            .map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-           <Button asChild className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:scale-110 transition-transform">
-              <Link href="#contact">Book Strategy Call</Link>
-            </Button>
+          <Button
+            asChild
+            className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:scale-110 transition-transform"
+          >
+            <Link href="#contact">Book Strategy Call</Link>
+          </Button>
         </div>
 
         <div className="md:hidden">
@@ -69,18 +107,57 @@ export function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background/95 backdrop-blur-sm border-l-white/10">
-              <div className="grid gap-4 p-6">
-                <Link href="/" className="flex items-center gap-3 mb-4" onClick={handleLinkClick}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 7L12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span className="text-xl font-bold font-headline">Qonkar</span>
-                </Link>
-                <nav className="grid gap-3">
-                  {navLinks.filter(link => link.href !== '#process').map((link) => (
+            <SheetContent
+              side="right"
+              className="bg-background/95 backdrop-blur-sm border-l-white/10 flex flex-col"
+            >
+              <SheetHeader>
+                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                <SheetDescription className="sr-only">
+                  A list of navigation links for the Qonkar Technologies
+                  website.
+                </SheetDescription>
+              </SheetHeader>
+              <Link
+                href="/"
+                className="flex items-center gap-3"
+                onClick={handleLinkClick}
+              >
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2L2 7V17L12 22L22 17V7L12 2Z"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M2 7L12 12L22 7"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 12V22"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-xl font-bold font-headline">Qonkar</span>
+              </Link>
+              <nav className="grid gap-3">
+                {navLinks
+                  .filter((link) => link.href !== "#process")
+                  .map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
@@ -90,11 +167,15 @@ export function Header() {
                       {link.label}
                     </Link>
                   ))}
-                </nav>
-                 <Button asChild className="mt-6 bg-gradient-to-r from-primary to-accent text-primary-foreground">
-                    <Link href="#contact" onClick={handleLinkClick}>Book Strategy Call</Link>
-                </Button>
-              </div>
+              </nav>
+              <Button
+                asChild
+                className="mt-auto bg-gradient-to-r from-primary to-accent text-primary-foreground"
+              >
+                <Link href="#contact" onClick={handleLinkClick}>
+                  Book Strategy Call
+                </Link>
+              </Button>
             </SheetContent>
           </Sheet>
         </div>
