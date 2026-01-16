@@ -134,3 +134,15 @@ export const jobListings: JobListing[] = [
     icon: Briefcase,
   },
 ];
+
+export type NavLink = {
+  href: string;
+  label: string;
+};
+
+export const navLinks: NavLink[] = [
+  { href: "#services", label: "Services" },
+  { href: "#projects", label: "Projects" },
+  { href: "/careers", label: "Careers" },
+  { href: "#contact", label: "Contact" },
+];
