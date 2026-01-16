@@ -1,7 +1,6 @@
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { ProjectShowcase } from '@/components/sections/ProjectShowcase';
-import { ClientMapSection } from '@/components/sections/ClientMap';
 import { Contact } from '@/components/sections/Contact';
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
       <Hero />
       <Services />
       <ProjectShowcase />
-      <ClientMapSection />
       <Contact />
     </>
   );

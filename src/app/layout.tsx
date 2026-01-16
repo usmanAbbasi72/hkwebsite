@@ -6,8 +6,8 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Apex Software Solutions',
-  description: 'Modern solutions for a digital world.',
+  title: 'SynthWave - Next-Gen Software Solutions',
+  description: 'Experience the future of software with SynthWave. We build cutting-edge solutions that redefine digital interaction.',
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Sparkles } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
 
@@ -28,36 +28,56 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-background/80 shadow-md backdrop-blur-sm" : "bg-transparent"
+        isScrolled ? "bg-background/80 shadow-lg backdrop-blur-lg border-b border-white/10" : "bg-transparent"
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <Sparkles className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold font-headline text-primary">
-            Apex Software Solutions
+        <Link href="/" className="flex items-center gap-3" prefetch={false}>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2 7L12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-xl font-bold font-headline text-foreground">
+            SynthWave
           </span>
         </Link>
         
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
         <div className="hidden md:flex items-center gap-4">
-           <Button asChild>
-              <Link href="#contact">Contact Us</Link>
+           <Button asChild className="bg-gradient-to-r from-primary to-purple-600 text-white hover:scale-105 transition-transform">
+              <Link href="#contact">Get a Demo</Link>
             </Button>
         </div>
 
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
+              <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="bg-background/90 backdrop-blur-lg">
               <div className="grid gap-4 p-4">
-                <Link href="/" className="flex items-center gap-2 mb-4" onClick={handleLinkClick}>
-                  <Sparkles className="h-8 w-8 text-primary" />
-                  <span className="text-xl font-bold font-headline">Apex</span>
+                <Link href="/" className="flex items-center gap-3 mb-4" onClick={handleLinkClick}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 7L12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span className="text-xl font-bold font-headline">SynthWave</span>
                 </Link>
                 <nav className="grid gap-2">
                   {navLinks.map((link) => (
@@ -66,14 +86,13 @@ export function Header() {
                       href={link.href}
                       className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
                       onClick={handleLinkClick}
-                      prefetch={link.href.startsWith("/")}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
-                 <Button asChild className="mt-4">
-                    <Link href="#contact" onClick={handleLinkClick}>Contact Us</Link>
+                 <Button asChild className="mt-4 bg-gradient-to-r from-primary to-purple-600 text-white">
+                    <Link href="#contact" onClick={handleLinkClick}>Get a Demo</Link>
                 </Button>
               </div>
             </SheetContent>
