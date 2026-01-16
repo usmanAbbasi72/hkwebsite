@@ -96,3 +96,42 @@ export const navLinks: NavLink[] = [
   { href: "#pricing", label: "Pricing" },
   { href: "#contact", label: "Contact" },
 ];
+
+export type JobListing = {
+  id: number;
+  title: string;
+  type: "Full-time" | "Part-time" | "Contract";
+  location: string;
+  description: string;
+};
+
+export const jobListings: JobListing[] = [
+  {
+    id: 1,
+    title: "Senior Frontend Engineer",
+    type: "Full-time",
+    location: "Remote",
+    description: "We are looking for an experienced Frontend Engineer to join our team. You will be responsible for building and maintaining our web applications.",
+  },
+  {
+    id: 2,
+    title: "Backend Engineer",
+    type: "Full-time",
+    location: "San Francisco, CA",
+    description: "We are looking for a Backend Engineer to help us build and scale our infrastructure. You will work with our team of engineers to design and implement new features.",
+  },
+  {
+    id: 3,
+    title: "Product Designer",
+    type: "Full-time",
+    location: "Remote",
+    description: "We are looking for a Product Designer to join our team. You will be responsible for designing and iterating on our products.",
+  },
+    {
+    id: 4,
+    title: "DevOps Engineer",
+    type: "Contract",
+    location: "Remote",
+    description: "We're seeking a contract DevOps Engineer to help us automate our deployment processes and manage our cloud infrastructure.",
+  },
+];
