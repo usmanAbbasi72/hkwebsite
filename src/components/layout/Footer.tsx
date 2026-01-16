@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { Code2, Github, Twitter, Linkedin } from "lucide-react";
+import { Sparkles, Github, Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-secondary">
+    <footer className="bg-background">
       <div className="container mx-auto px-4 py-8 md:px-6">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex items-center gap-2">
-            <Code2 className="h-8 w-8 text-primary" />
+            <Sparkles className="h-8 w-8 text-primary" />
             <span className="text-xl font-bold font-headline text-primary">
               Apex Software Solutions
             </span>

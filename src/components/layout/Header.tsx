@@ -4,14 +4,12 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Code2 } from "lucide-react";
+import { Menu, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
-  { href: "#clients", label: "Clients" },
-  { href: "#booking", label: "Booking" },
   { href: "/careers", label: "Careers" },
   { href: "#contact", label: "Contact" },
 ];
@@ -41,7 +39,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <Code2 className="h-8 w-8 text-primary" />
+          <Sparkles className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline text-primary">
             Apex Software Solutions
           </span>
@@ -60,7 +58,7 @@ export function Header() {
         </nav>
         <div className="hidden md:block">
            <Button asChild>
-              <Link href="#contact">Get a Quote</Link>
+              <Link href="#contact">Contact Us</Link>
             </Button>
         </div>
         <div className="md:hidden">
@@ -74,7 +72,7 @@ export function Header() {
             <SheetContent side="right">
               <div className="grid gap-4 p-4">
                 <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick}>
-                  <Code2 className="h-8 w-8 text-primary" />
+                  <Sparkles className="h-8 w-8 text-primary" />
                   <span className="text-xl font-bold font-headline">Apex</span>
                 </Link>
                 <nav className="grid gap-2">
@@ -91,7 +89,7 @@ export function Header() {
                   ))}
                 </nav>
                  <Button asChild>
-                    <Link href="#contact" onClick={handleLinkClick}>Get a Quote</Link>
+                    <Link href="#contact" onClick={handleLinkClick}>Contact Us</Link>
                 </Button>
               </div>
             </SheetContent>

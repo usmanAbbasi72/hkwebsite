@@ -48,7 +48,7 @@ export function ProjectShowcase() {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-secondary">
+    <section id="projects" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-headline font-bold tracking-tight sm:text-4xl">Our Flagship Projects</h2>
@@ -57,10 +57,10 @@ export function ProjectShowcase() {
           </p>
         </div>
 
-        <Card className="mb-12 bg-background/70 backdrop-blur-sm">
+        <Card className="mb-12 bg-card/70 backdrop-blur-sm border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline">
-              <Wand2 className="text-accent" />
+              <Wand2 className="text-primary" />
               AI-Powered Project Showcase
             </CardTitle>
           </CardHeader>
@@ -106,7 +106,7 @@ export function ProjectShowcase() {
                 "overflow-hidden transition-all duration-500",
                 highlighted.length > 0 &&
                   (highlighted.includes(project.title)
-                    ? "ring-4 ring-accent shadow-2xl"
+                    ? "ring-4 ring-primary shadow-2xl"
                     : "opacity-60 scale-95")
               )}
             >

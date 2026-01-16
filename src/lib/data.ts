@@ -1,4 +1,4 @@
-import { Code, Server, Smartphone, Cloud, Bot, Briefcase } from "lucide-react";
+import { Code, Server, Smartphone, Cloud, Bot, Briefcase, PenTool } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type Service = {
@@ -9,24 +9,24 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    title: "Web Development",
-    description: "Building responsive and scalable web applications tailored to your business needs.",
+    title: "Web & Mobile Apps",
+    description: "Building responsive and scalable web and mobile applications tailored to your business needs.",
     icon: Code,
   },
   {
-    title: "Mobile App Development",
-    description: "Creating intuitive and high-performance mobile apps for both iOS and Android platforms.",
-    icon: Smartphone,
+    title: "AI Integration",
+    description: "Integrating AI-powered solutions to automate processes and derive valuable insights from data.",
+    icon: Bot,
   },
   {
-    title: "Cloud Solutions",
-    description: "Leveraging cloud platforms like AWS, Azure, and Google Cloud for robust and scalable infrastructure.",
+    title: "Cloud & DevOps",
+    description: "Leveraging cloud platforms for robust, scalable infrastructure and streamlined development pipelines.",
     icon: Cloud,
   },
   {
-    title: "AI & Machine Learning",
-    description: "Integrating AI-powered solutions to automate processes and derive valuable insights from data.",
-    icon: Bot,
+    title: "UI/UX Design",
+    description: "Creating intuitive and beautiful user interfaces that provide an exceptional user experience.",
+    icon: PenTool,
   },
 ];
 
