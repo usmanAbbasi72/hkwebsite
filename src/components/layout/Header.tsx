@@ -39,12 +39,12 @@ export function Header() {
             <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <span className="text-xl font-bold font-headline text-foreground">
-            Qonkar
+            HK-SoftwareHouse
           </span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.filter(link => link.href !== '#process').map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -80,7 +80,7 @@ export function Header() {
                   <span className="text-xl font-bold font-headline">Qonkar</span>
                 </Link>
                 <nav className="grid gap-3">
-                  {navLinks.map((link) => (
+                  {navLinks.filter(link => link.href !== '#process').map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
