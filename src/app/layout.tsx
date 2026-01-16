@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={cn('font-body antialiased bg-background', spaceGrotesk.variable, inter.variable)}>
+      <body className={cn('font-body antialiased bg-background overflow-x-hidden', spaceGrotesk.variable, inter.variable)}>
         <Header />
         <main>{children}</main>
         <Footer />
