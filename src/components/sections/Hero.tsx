@@ -24,12 +24,12 @@ export function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:scale-110 transition-transform duration-300">
-              <Link href="#contact">
+              <Link href="/contact">
                 Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="group border-white/20 text-foreground/80 hover:bg-foreground/5 hover:text-white transition-all duration-300 hover:scale-110 hover:border-primary/50">
-              <Link href="#projects">
+              <Link href="/projects">
                 <Briefcase className="mr-2 h-5 w-5 text-primary group-hover:text-accent transition-colors"/> View Our Work
               </Link>
             </Button>

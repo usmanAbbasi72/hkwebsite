@@ -7,12 +7,12 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { href: '#services', label: 'Services' },
-  { href: '#process', label: 'Process' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#team', label: 'Team' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/services', label: 'Services' },
+  { href: '/process', label: 'Process' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/team', label: 'Team' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export type Service = {

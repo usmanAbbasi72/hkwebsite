@@ -78,7 +78,7 @@ export function Header() {
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks
-            .filter((link) => link.href !== "#process")
+            .filter((link) => link.href !== "/process")
             .map((link) => (
               <Link
                 key={link.href}
@@ -95,7 +95,7 @@ export function Header() {
             asChild
             className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:scale-110 transition-transform"
           >
-            <Link href="#contact">Book Strategy Call</Link>
+            <Link href="/contact">Book Strategy Call</Link>
           </Button>
         </div>
 
@@ -156,7 +156,7 @@ export function Header() {
               </Link>
               <nav className="grid gap-3">
                 {navLinks
-                  .filter((link) => link.href !== "#process")
+                  .filter((link) => link.href !== "/process")
                   .map((link) => (
                     <Link
                       key={link.href}
@@ -172,7 +172,7 @@ export function Header() {
                 asChild
                 className="mt-auto bg-gradient-to-r from-primary to-accent text-primary-foreground"
               >
-                <Link href="#contact" onClick={handleLinkClick}>
+                <Link href="/contact" onClick={handleLinkClick}>
                   Book Strategy Call
                 </Link>
               </Button>
