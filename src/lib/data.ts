@@ -1,4 +1,4 @@
-import { Code, Bot, ShoppingCart, BarChart, HardHat, Settings } from 'lucide-react';
+import { Code, Bot, ShoppingCart, BarChart, HardHat, Settings, MessageSquare, LayoutTemplate, TerminalSquare, Rocket } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export type NavLink = {
@@ -68,24 +68,29 @@ export const stats: Stat[] = [
 export type ProcessStep = {
   title: string;
   description: string;
+  icon: LucideIcon;
 };
 
 export const processSteps: ProcessStep[] = [
   {
     title: "Consultation",
-    description: "We start by understanding your vision, goals, and requirements in a detailed discovery session."
+    description: "We start by understanding your vision, goals, and requirements in a detailed discovery session.",
+    icon: MessageSquare
   },
   {
     title: "Strategy & Design",
-    description: "Our team crafts a comprehensive strategy and designs a user-centric wireframe and prototype."
+    description: "Our team crafts a comprehensive strategy and designs a user-centric wireframe and prototype.",
+    icon: LayoutTemplate
   },
   {
     title: "Development",
-    description: "We bring the designs to life with clean, efficient code, following an agile development methodology."
+    description: "We bring the designs to life with clean, efficient code, following an agile development methodology.",
+    icon: TerminalSquare
   },
   {
     title: "Launch & Growth",
-    description: "After rigorous testing, we deploy your project and provide ongoing support and marketing to ensure growth."
+    description: "After rigorous testing, we deploy your project and provide ongoing support and marketing to ensure growth.",
+    icon: Rocket
   }
 ];
 
