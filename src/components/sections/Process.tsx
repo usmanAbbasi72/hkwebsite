@@ -4,9 +4,9 @@ import { processSteps } from "@/lib/data";
 
 export function Process() {
   return (
-    <section id="process" className="py-16 md:py-24 bg-background">
+    <section id="process" className="py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl gradient-text">
             Our Proven Process
           </h2>
