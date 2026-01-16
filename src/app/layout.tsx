@@ -4,10 +4,22 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Space_Grotesk, Inter } from 'next/font/google';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  weight: ['400', '500', '600', '700'],
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: 'SynthWave - Next-Gen Software Solutions',
-  description: 'Experience the future of software with SynthWave. We build cutting-edge solutions that redefine digital interaction.',
+  title: 'Qonkar Technologies - Transform Your Digital Vision Into Reality',
+  description: 'Premium software development and digital marketing agency specializing in custom software, Shopify development, web development, IT consulting, and digital marketing solutions.',
 };
 
 export default function RootLayout({
@@ -17,12 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
-      <body className={cn('font-body antialiased bg-background')}>
+      <body className={cn('font-body antialiased bg-background', spaceGrotesk.variable, inter.variable)}>
         <Header />
         <main>{children}</main>
         <Footer />

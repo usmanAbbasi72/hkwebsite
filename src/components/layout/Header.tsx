@@ -14,7 +14,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -39,11 +39,11 @@ export function Header() {
             <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <span className="text-xl font-bold font-headline text-foreground">
-            SynthWave
+            Qonkar
           </span>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -56,8 +56,8 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-           <Button asChild className="bg-gradient-to-r from-primary to-purple-600 text-white hover:scale-105 transition-transform">
-              <Link href="#contact">Get a Demo</Link>
+           <Button asChild className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:scale-110 transition-transform">
+              <Link href="#contact">Book Strategy Call</Link>
             </Button>
         </div>
 
@@ -69,17 +69,17 @@ export function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background/90 backdrop-blur-lg">
-              <div className="grid gap-4 p-4">
+            <SheetContent side="right" className="bg-background/95 backdrop-blur-sm border-l-white/10">
+              <div className="grid gap-4 p-6">
                 <Link href="/" className="flex items-center gap-3 mb-4" onClick={handleLinkClick}>
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M2 7L12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-xl font-bold font-headline">SynthWave</span>
+                  <span className="text-xl font-bold font-headline">Qonkar</span>
                 </Link>
-                <nav className="grid gap-2">
+                <nav className="grid gap-3">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -91,8 +91,8 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
-                 <Button asChild className="mt-4 bg-gradient-to-r from-primary to-purple-600 text-white">
-                    <Link href="#contact" onClick={handleLinkClick}>Get a Demo</Link>
+                 <Button asChild className="mt-6 bg-gradient-to-r from-primary to-accent text-primary-foreground">
+                    <Link href="#contact" onClick={handleLinkClick}>Book Strategy Call</Link>
                 </Button>
               </div>
             </SheetContent>

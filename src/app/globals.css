@@ -4,26 +4,35 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 213 31% 91%;
-    --secondary: 224 71% 10%;
-    --secondary-foreground: 213 31% 91%;
-    --muted: 224 71% 10%;
-    --muted-foreground: 216 12% 52%;
-    --accent: 262 83% 58%;
-    --accent-foreground: 213 31% 91%;
+    --background: 222 84% 5%; /* Deep dark blue */
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 6%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 260 100% 70%; /* Vibrant Purple */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 190 100% 50%; /* Vibrant Cyan */
+    --accent-foreground: 222 84% 5%;
+
     --destructive: 0 63% 31%;
-    --destructive-foreground: 213 31% 91%;
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-    --ring: 262 83% 58%;
-    --radius: 0.5rem;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
   }
 }
 
@@ -33,5 +42,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glassmorphic-card {
+    @apply bg-white/5 border border-white/10 backdrop-blur-lg;
+  }
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-br from-gray-200 to-gray-500;
   }
 }

@@ -10,11 +10,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
+import { Send } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
-  subject: z.string().min(5, "Subject must be at least 5 characters."),
+  company: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters."),
 });
 
@@ -25,7 +26,7 @@ export function Contact() {
     defaultValues: {
       name: "",
       email: "",
-      subject: "",
+      company: "",
       message: "",
     },
   });
@@ -40,73 +41,81 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-secondary">
+    <section id="contact" className="py-16 md:py-24 bg-secondary/30 relative">
+      <div className="absolute inset-0 -z-10 animate-aurora">
+        <div className="absolute -inset-60 bg-gradient-to-tr from-primary/10 via-transparent to-transparent opacity-50 animate-aurora-2" />
+        <div className="absolute -inset-60 bg-gradient-to-bl from-accent/10 via-transparent to-transparent opacity-50 animate-aurora-3" />
+      </div>
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl font-headline font-bold tracking-tight sm:text-4xl">Let's build something together</h2>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl gradient-text">
+            Ready to Start Your Project?
+          </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Have a project in mind or just want to say hello? We'd love to hear from you.
+            Let's discuss how we can elevate your digital presence. Fill out the form below to book your free strategy call.
           </p>
         </div>
         <div className="max-w-2xl mx-auto">
-          <Card>
+          <Card className="glassmorphic-card">
             <CardContent className="p-6 md:p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Name" {...field} className="bg-background/50"/>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="your.email@example.com" {...field} className="bg-background/50"/>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Full Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your Name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="your.email@example.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Subject</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Project Inquiry" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company (Optional)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Company" {...field} className="bg-background/50" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   <FormField
                     control={form.control}
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>How can we help?</FormLabel>
                         <FormControl>
-                          <Textarea rows={5} placeholder="Describe your project or question..." {...field} />
+                          <Textarea rows={5} placeholder="Describe your project or question..." {...field} className="bg-background/50"/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full" size="lg" disabled={form.formState.isSubmitting}>
-                    Send Message
+                  <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent text-white shadow-lg hover:scale-105 transition-transform" size="lg" disabled={form.formState.isSubmitting}>
+                    Send Message <Send className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
               </Form>
