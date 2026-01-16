@@ -18,7 +18,7 @@ export default function CareersPage() {
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {jobListings.map((job) => (
-              <Card key={job.id} className="flex flex-col">
+              <Card key={job.id} className="flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <CardTitle className="font-headline text-xl">{job.title}</CardTitle>

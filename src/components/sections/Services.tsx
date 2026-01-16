@@ -13,7 +13,7 @@ export function Services() {
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
-            <Card key={service.title} className="text-center group hover:shadow-lg transition-shadow duration-300">
+            <Card key={service.title} className="text-center group hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
               <CardHeader className="items-center">
                 <div className="bg-primary text-primary-foreground rounded-full p-4 mb-4 group-hover:bg-accent transition-colors duration-300">
                   <service.icon className="h-8 w-8" />

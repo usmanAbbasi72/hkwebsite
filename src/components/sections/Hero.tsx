@@ -20,7 +20,7 @@ export function Hero() {
       )}
       <div className="absolute inset-0 bg-primary/70" />
       <div className="relative z-10 container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto space-y-6">
+        <div className="max-w-3xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
           <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             Building the Future, One Line of Code at a Time
           </h1>

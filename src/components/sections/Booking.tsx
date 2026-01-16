@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -55,28 +55,73 @@ export function Booking() {
   }
 
   return (
-    <section id="booking" className="py-16 md:py-24 bg-secondary">
+    <section id="booking" className="py-16 md:py-24 bg-secondary overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in slide-in-from-top-10 duration-500">
           <h2 className="text-3xl font-headline font-bold tracking-tight sm:text-4xl">Schedule a Consultation</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Let's discuss how we can help your business grow. Pick a date that works for you.
           </p>
         </div>
-        <Card className="max-w-4xl mx-auto shadow-lg">
-          <CardContent className="p-6 md:p-8">
+        <Card className="max-w-4xl mx-auto shadow-lg animate-in fade-in zoom-in-95 duration-500 delay-200">
+          <CardContent className="p-0">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-                  <div className="flex flex-col items-center space-y-4 w-full">
-                    <h3 className="text-xl font-headline font-semibold">1. Select a Date</h3>
+              <form onSubmit={form.handleSubmit(onSubmit)}>
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  <div className="p-6 md:p-8 flex flex-col justify-center animate-in fade-in slide-in-from-left-16 duration-500 delay-400">
+                    <h3 className="text-xl font-headline font-semibold mb-6 text-center">1. Your Details</h3>
+                    <div className="space-y-6">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="John Doe" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email Address</FormLabel>
+                            <FormControl>
+                              <Input placeholder="you@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="notes"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Project Details (Optional)</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="Tell us a little about your project..." {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-6 md:p-8 bg-muted/50 flex flex-col items-center justify-center rounded-r-lg animate-in fade-in slide-in-from-right-16 duration-500 delay-400">
+                    <h3 className="text-xl font-headline font-semibold mb-6">2. Select a Date</h3>
                     <FormField
                       control={form.control}
                       name="date"
                       render={({ field }) => (
                         <FormItem className="flex flex-col items-center">
                           {isClient ? (
-                            <Calendar
+                             <Calendar
                               mode="single"
                               selected={field.value}
                               onSelect={field.onChange}
@@ -84,66 +129,39 @@ export function Booking() {
                                 date < startOfToday() || date < new Date("1900-01-01")
                               }
                               initialFocus
-                              className="rounded-md border bg-card"
+                              className="rounded-md border bg-card shadow-inner"
+                              styles={{
+                                  head_cell: {
+                                    width: '40px',
+                                  },
+                                  cell: {
+                                    width: '40px',
+                                    height: '40px'
+                                  },
+                                  button: {
+                                    width: '40px',
+                                    height: '40px'
+                                  },
+                                  caption_label: {
+                                    fontSize: '1.125rem'
+                                  }
+                              }}
                             />
                           ) : (
-                            <div className="w-[280px] h-[333px] animate-pulse rounded-md bg-muted border" />
+                            <div className="w-[350px] h-[365px] animate-pulse rounded-md bg-muted border" />
                           )}
                           <FormMessage className="pt-2" />
                         </FormItem>
                       )}
                     />
                   </div>
-
-                  <div className="space-y-6 w-full">
-                    <h3 className="text-xl font-headline font-semibold text-center lg:text-left">2. Your Details</h3>
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Full Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="John Doe" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email Address</FormLabel>
-                          <FormControl>
-                            <Input placeholder="you@example.com" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="notes"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Project Details (Optional)</FormLabel>
-                          <FormControl>
-                            <Textarea placeholder="Tell us a little about your project..." {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
                 </div>
                 
-                <div className="flex justify-center pt-4">
-                    <Button type="submit" size="lg" className="w-full max-w-sm" disabled={form.formState.isSubmitting}>
+                <CardFooter className="p-6 md:p-8 border-t justify-center">
+                    <Button type="submit" size="lg" className="w-full max-w-sm transition-transform hover:scale-105" disabled={form.formState.isSubmitting}>
                         Request Booking
                     </Button>
-                </div>
+                </CardFooter>
               </form>
             </Form>
           </CardContent>
