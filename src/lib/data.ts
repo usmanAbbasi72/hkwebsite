@@ -1,4 +1,4 @@
-import { Code, Bot, ShoppingCart, BarChart, HardHat, Settings, MessageSquare, LayoutTemplate, TerminalSquare, Rocket } from 'lucide-react';
+import { Code, Bot, ShoppingCart, BarChart, HardHat, Settings, MessageSquare, LayoutTemplate, TerminalSquare, Rocket, Linkedin, Twitter } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export type NavLink = {
@@ -10,6 +10,7 @@ export const navLinks: NavLink[] = [
   { href: '#services', label: 'Services' },
   { href: '#process', label: 'Process' },
   { href: '#projects', label: 'Projects' },
+  { href: '#team', label: 'Team' },
   { href: '#testimonials', label: 'Testimonials' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -164,4 +165,41 @@ export const testimonials: Testimonial[] = [
     company: "Growth Solutions",
     avatarUrl: "https://i.pravatar.cc/150?img=5"
   }
+];
+
+export type TeamMember = {
+  id: number;
+  name: string;
+  title: string;
+  bio: string;
+  avatarUrl: string;
+  socials: {
+    linkedin: string;
+    twitter: string;
+  };
+};
+
+export const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    name: "Alex Qonkar",
+    title: "Founder & CEO",
+    bio: "With a passion for innovation and a drive for excellence, Alex leads Qonkar Technologies in delivering cutting-edge digital solutions.",
+    avatarUrl: "https://i.pravatar.cc/150?img=11",
+    socials: {
+      linkedin: "#",
+      twitter: "#",
+    },
+  },
+  {
+    id: 2,
+    name: "Sarah Chen",
+    title: "Chief Operating Officer",
+    bio: "Sarah orchestrates the operational symphony at Qonkar, ensuring every project is delivered with precision and quality.",
+    avatarUrl: "https://i.pravatar.cc/150?img=12",
+    socials: {
+      linkedin: "#",
+      twitter: "#",
+    },
+  },
 ];
