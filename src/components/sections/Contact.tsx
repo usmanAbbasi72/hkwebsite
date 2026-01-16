@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import { Send } from "lucide-react";
+import { Send, User, Mail, Building2, MessageSquare } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -60,34 +60,38 @@ export function Contact() {
             <CardContent className="p-6 md:p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Full Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your Name" {...field} className="bg-background/50"/>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="your.email@example.com" {...field} className="bg-background/50"/>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Full Name</FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                            <Input placeholder="Your Name" {...field} className="bg-background/50 pl-10"/>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                           <div className="relative">
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                            <Input type="email" placeholder="your.email@example.com" {...field} className="bg-background/50 pl-10"/>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                       control={form.control}
                       name="company"
@@ -95,7 +99,10 @@ export function Contact() {
                         <FormItem>
                           <FormLabel>Company (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Company" {...field} className="bg-background/50" />
+                            <div className="relative">
+                              <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                              <Input placeholder="Your Company" {...field} className="bg-background/50 pl-10" />
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -108,7 +115,10 @@ export function Contact() {
                       <FormItem>
                         <FormLabel>How can we help?</FormLabel>
                         <FormControl>
-                          <Textarea rows={5} placeholder="Describe your project or question..." {...field} className="bg-background/50"/>
+                          <div className="relative">
+                            <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+                            <Textarea rows={5} placeholder="Describe your project or question..." {...field} className="bg-background/50 pl-10 pt-3"/>
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
