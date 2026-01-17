@@ -8,9 +8,15 @@ To get started, take a look at `src/app/page.tsx`.
 
 This project uses [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework, for all its styling. Instead of writing custom CSS files for each component or page, we apply pre-existing utility classes directly in the component files (`.tsx`). This approach is modern, highly efficient, and helps keep the project maintainable and performant.
 
-### Utility Classes
+### Understanding Utility Classes
 
-Because we use Tailwind, it is not practical to document every CSS class in this file, as most are part of the framework itself. For a complete reference of all available utility classes (e.g., `py-16`, `text-center`, `grid`), please refer to the official **[Tailwind CSS Documentation](https://tailwindcss.com/docs)**.
+While the official **[Tailwind CSS Documentation](https://tailwindcss.com/docs)** is the complete reference, here are a few common patterns you'll see in this project:
+
+*   **Spacing:** Classes like `p-4`, `m-8`, and `gap-2` are used for padding, margin, and grid/flex gaps. The number corresponds to a predefined scale.
+*   **Flexbox & Grid:** You'll frequently see `flex`, `grid`, `items-center`, and `justify-between` to create layouts.
+*   **Color Opacity:** A common pattern in this project is the use of color opacity modifiers. You will often see classes like `bg-background/50` or `border-white/20`. The part after the slash (`/`) sets the **opacity**.
+    *   For example, `bg-background/50` means "use the `background` theme color with 50% opacity".
+    *   This is used throughout the project to create semi-transparent "glassmorphic" effects.
 
 ### Custom Styles & Theme
 
