@@ -125,7 +125,7 @@ export function ClientMap() {
               defaultZoom={2}
               gestureHandling={'greedy'}
               disableDefaultUI={true}
-              mapId={'qonkar-map'}
+              mapId={'hk-map'}
               styles={mapStyles}
             >
               {clientLocations.map((location) => (

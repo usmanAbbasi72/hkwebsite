@@ -17,7 +17,7 @@ export function Footer() {
                 <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <span className="text-2xl font-bold font-headline text-foreground">
-                Qonkar
+                HK
               </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mt-4">
@@ -81,7 +81,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Qonkar Technologies. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} HK Technologies. All rights reserved.</p>
         </div>
       </div>
     </footer>

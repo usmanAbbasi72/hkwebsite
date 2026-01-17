@@ -143,7 +143,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    quote: "Qonkar's team delivered beyond our expectations. Their expertise in AI and custom software is unmatched. They transformed our operations.",
+    quote: "HK's team delivered beyond our expectations. Their expertise in AI and custom software is unmatched. They transformed our operations.",
     name: "Jane Doe",
     title: "COO",
     company: "Innovate Corp",
@@ -182,9 +182,9 @@ export type TeamMember = {
 export const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: "Alex Qonkar",
+    name: "Alex HK",
     title: "Founder & CEO",
-    bio: "With a passion for innovation and a drive for excellence, Alex leads Qonkar Technologies in delivering cutting-edge digital solutions.",
+    bio: "With a passion for innovation and a drive for excellence, Alex leads HK Technologies in delivering cutting-edge digital solutions.",
     avatarUrl: "https://i.pravatar.cc/150?img=11",
     socials: {
       linkedin: "#",
@@ -195,7 +195,7 @@ export const teamMembers: TeamMember[] = [
     id: 2,
     name: "Sarah Chen",
     title: "Chief Operating Officer",
-    bio: "Sarah orchestrates the operational symphony at Qonkar, ensuring every project is delivered with precision and quality.",
+    bio: "Sarah orchestrates the operational symphony at HK, ensuring every project is delivered with precision and quality.",
     avatarUrl: "https://i.pravatar.cc/150?img=12",
     socials: {
       linkedin: "#",

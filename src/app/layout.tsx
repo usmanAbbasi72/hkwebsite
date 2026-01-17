@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Qonkar Technologies - Transform Your Digital Vision Into Reality',
+  title: 'HK Technologies - Transform Your Digital Vision Into Reality',
   description: 'Premium software development and digital marketing agency specializing in custom software, Shopify development, web development, IT consulting, and digital marketing solutions.',
 };
 

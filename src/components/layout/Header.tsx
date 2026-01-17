@@ -72,7 +72,7 @@ export function Header() {
             />
           </svg>
           <span className="text-xl font-bold font-headline text-foreground">
-            Qonkar
+            HK
           </span>
         </Link>
 
@@ -113,7 +113,7 @@ export function Header() {
               <SheetHeader>
                 <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                 <SheetDescription className="sr-only">
-                  A list of navigation links for the Qonkar Technologies
+                  A list of navigation links for the HK Technologies
                   website.
                 </SheetDescription>
               </SheetHeader>
@@ -151,7 +151,7 @@ export function Header() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-xl font-bold font-headline">Qonkar</span>
+                <span className="text-xl font-bold font-headline">HK</span>
               </Link>
               <nav className="grid gap-3">
                 {navLinks
