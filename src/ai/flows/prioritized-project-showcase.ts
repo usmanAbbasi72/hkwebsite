@@ -29,7 +29,7 @@ const PrioritizedProjectShowcaseOutputSchema = z.object({
   highlightedProjects: z
     .string()
     .describe(
-      'A list of project names that best align with the provided business priorities.'
+      'A comma-separated list of project names that best align with the provided business priorities.'
     ),
   reasoning: z
     .string()
@@ -57,7 +57,7 @@ Here is a list of available projects with their descriptions: {{{projectList}}}.
 
 Based on the business priorities, select the projects that would be most compelling to potential clients and explain your reasoning.
 
-Output the selected project names and your reasoning in the format specified by the schema.`,
+Output the selected project names as a comma-separated list, and your reasoning in the format specified by the schema.`,
 });
 
 const prioritizedProjectShowcaseFlow = ai.defineFlow(
