@@ -52,4 +52,8 @@
   .gradient-text {
     @apply text-transparent bg-clip-text bg-gradient-to-br from-gray-200 to-gray-500;
   }
+  .hero-subtitle {
+    @apply max-w-3xl mx-auto text-lg md:text-xl text-foreground/80;
+    text-shadow: 1px 1px 3px hsl(var(--background) / 0.7);
+  }
 }

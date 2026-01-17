@@ -19,7 +19,7 @@ export function Hero() {
           <h1 className="text-5xl font-extrabold tracking-tighter font-headline sm:text-6xl md:text-7xl lg:text-8xl gradient-text">
             Transform Your Digital Vision Into Reality
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/80">
+          <p className="hero-subtitle">
             A premium software development and digital marketing agency for when results matter.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
