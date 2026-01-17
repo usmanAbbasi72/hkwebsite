@@ -81,7 +81,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} HK Technologies. All rights reserved.</p>
+          <p>© 2026 HK Technologies. All rights reserved.</p>
         </div>
       </div>
     </footer>
