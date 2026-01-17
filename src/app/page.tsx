@@ -1,3 +1,4 @@
+import { ClientMap } from '@/components/sections/ClientMap';
 import { Contact } from '@/components/sections/Contact';
 import { Hero } from '@/components/sections/Hero';
 import { ProjectShowcase } from '@/components/sections/ProjectShowcase';
@@ -12,6 +13,7 @@ export default function Home() {
       <Stats />
       <Services />
       <ProjectShowcase />
+      <ClientMap />
       <Testimonials />
       <Contact />
     </>

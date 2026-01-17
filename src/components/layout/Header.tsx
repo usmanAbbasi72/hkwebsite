@@ -78,7 +78,6 @@ export function Header() {
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks
-            .filter((link) => link.href !== "/process")
             .map((link) => (
               <Link
                 key={link.href}
@@ -156,7 +155,6 @@ export function Header() {
               </Link>
               <nav className="grid gap-3">
                 {navLinks
-                  .filter((link) => link.href !== "/process")
                   .map((link) => (
                     <Link
                       key={link.href}
