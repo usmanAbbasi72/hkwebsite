@@ -7,11 +7,10 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/clients', label: 'Clients' },
-  { href: '/team', label: 'Team' },
-  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/about', label: 'About Us' },
+  { href: '/projects', label: 'Portfolio' },
+  { href: '/blog', label: 'Blogs' },
+  { href: '/careers', label: 'Career' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -202,4 +201,77 @@ export const teamMembers: TeamMember[] = [
       twitter: "#",
     },
   },
+];
+
+export const faqItems = [
+  {
+    question: "What services does HK Technologies offer?",
+    answer: "We offer a wide range of services including custom software development, AI integration, Shopify development, digital marketing, web development, and IT consulting."
+  },
+  {
+    question: "What is your development process?",
+    answer: "Our process is divided into four key stages: Consultation, Strategy & Design, Development, and Launch & Growth. This ensures a streamlined and transparent workflow from start to finish."
+  },
+  {
+    question: "How much does a project cost?",
+    answer: "Project costs vary depending on the scope and complexity. We provide detailed proposals and estimates after an initial consultation. Contact us for a free strategy call to discuss your project."
+  },
+  {
+    question: "Do you work with startups?",
+    answer: "Yes, we love working with startups and established companies alike. We tailor our solutions to meet the unique needs and budgets of our clients."
+  }
+];
+
+export const blogPosts = [
+  {
+    id: '1',
+    title: 'The Future of AI in Business',
+    description: 'Exploring how artificial intelligence is transforming industries and what it means for your business.',
+    imageUrl: 'https://images.unsplash.com/photo-1620712943543-285820f78369?q=80&w=2070&auto=format&fit=crop',
+    imageHint: 'AI brain',
+    author: 'Alex HK',
+    date: '2024-07-28',
+    tags: ['AI', 'Business'],
+  },
+  {
+    id: '2',
+    title: '5 Tips for a High-Converting Shopify Store',
+    description: 'Learn the secrets to creating a Shopify store that not only looks great but also drives sales.',
+    imageUrl: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop',
+    imageHint: 'e-commerce checkout',
+    author: 'Sarah Chen',
+    date: '2024-07-22',
+    tags: ['Shopify', 'E-commerce'],
+  },
+  {
+    id: '3',
+    title: 'Why Your Next Web App Should Use Next.js',
+    description: 'A deep dive into the benefits of Next.js for building modern, high-performance web applications.',
+    imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop',
+    imageHint: 'code on screen',
+    author: 'Alex HK',
+    date: '2024-07-15',
+    tags: ['Web Development', 'Next.js'],
+  },
+];
+
+export const jobOpenings = [
+  {
+    title: 'Senior Frontend Developer',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'We are looking for a talented frontend developer to join our team. You will be responsible for building beautiful and performant user interfaces for our clients.'
+  },
+  {
+    title: 'AI/ML Engineer',
+    location: 'New York, NY',
+    type: 'Full-time',
+    description: 'Join our AI team and work on cutting-edge machine learning models to solve real-world business problems.'
+  },
+  {
+    title: 'Digital Marketing Specialist',
+    location: 'Remote',
+    type: 'Part-time',
+    description: 'We are seeking a data-driven digital marketer to manage our SEO, PPC, and content marketing efforts.'
+  }
 ];
