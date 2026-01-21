@@ -31,13 +31,9 @@
       "type": "object",
       "description": "Represents a project completed by the software house.",
       "properties": {
-        "id": {
+        "title": {
           "type": "string",
-          "description": "Unique identifier for the project."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the project."
+          "description": "Title of the project."
         },
         "description": {
           "type": "string",
@@ -48,25 +44,22 @@
           "description": "URL of the project image.",
           "format": "uri"
         },
-        "client": {
+        "imageHint": {
           "type": "string",
-          "description": "Name of the client for whom the project was done."
+          "description": "Hint for AI image search."
         },
-        "testimonial": {
-          "type": "string",
-          "description": "Client testimonial for the project."
-        },
-        "details": {
-          "type": "string",
-          "description": "Details about the project."
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags associated with the project."
         }
       },
       "required": [
-        "id",
-        "name",
+        "title",
         "description",
-        "imageUrl",
-        "client"
+        "imageUrl"
       ]
     },
     "Client": {
