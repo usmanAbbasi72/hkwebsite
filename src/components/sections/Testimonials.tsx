@@ -1,7 +1,7 @@
 "use client";
 
 import { testimonials } from '@/lib/data';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
-import { Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import Autoplay from "embla-carousel-autoplay";
 
 export function Testimonials() {
@@ -37,43 +37,44 @@ export function Testimonials() {
               stopOnInteraction: true,
             }),
           ]}
-          className="w-full max-w-4xl mx-auto"
+          className="w-full max-w-5xl mx-auto"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-4">
             {testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-4">
-                  <Card className="glassmorphic-card h-full flex flex-col">
-                    <CardContent className="p-6 flex flex-col flex-grow">
-                      <div className="flex mb-2">
+              <CarouselItem key={testimonial.id} className="pl-4 md:basis-1/2">
+                <div className="h-full">
+                  <Card className="glassmorphic-card h-full flex flex-col justify-between p-8 relative overflow-hidden">
+                    <Quote className="absolute top-4 left-4 h-16 w-16 text-primary/10" />
+                    <div className="z-10 flex-grow flex flex-col">
+                      <div className="flex mb-4">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
                         ))}
                       </div>
-                      <blockquote className="text-foreground/90 mb-6 flex-grow">
+                      <blockquote className="text-foreground/90 text-lg italic flex-grow">
                         "{testimonial.quote}"
                       </blockquote>
-                      <div className="flex items-center gap-4">
-                        <Image
-                          src={testimonial.avatarUrl}
-                          alt={testimonial.name}
-                          width={48}
-                          height={48}
-                          className="rounded-full"
-                        />
-                        <div>
-                          <p className="font-semibold text-foreground">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.title}, {testimonial.company}</p>
-                        </div>
+                    </div>
+                    <div className="flex items-center gap-4 mt-6 z-10">
+                      <Image
+                        src={testimonial.avatarUrl}
+                        alt={testimonial.name}
+                        width={56}
+                        height={56}
+                        className="rounded-full border-2 border-primary/50"
+                      />
+                      <div>
+                        <p className="font-semibold text-lg text-foreground">{testimonial.name}</p>
+                        <p className="text-sm text-muted-foreground">{testimonial.title}, {testimonial.company}</p>
                       </div>
-                    </CardContent>
+                    </div>
                   </Card>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
+          <CarouselPrevious className="hidden lg:flex" />
+          <CarouselNext className="hidden lg:flex" />
         </Carousel>
       </div>
     </section>
