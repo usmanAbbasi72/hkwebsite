@@ -23,6 +23,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
+  const showLogin = process.env.NEXT_PUBLIC_SHOW_LOGIN_BUTTON === 'true';
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,7 +109,7 @@ export function Header() {
           >
             <Link href="/contact">Book Strategy Call</Link>
           </Button>
-          {!isUserLoading &&
+          {showLogin && !isUserLoading &&
             (user ? (
               <>
                 <Button asChild variant="outline">
@@ -200,7 +202,7 @@ export function Header() {
                   ))}
               </nav>
               <div className="mt-auto flex flex-col gap-2">
-                {user ? (
+                {showLogin && (user ? (
                     <>
                       <Button asChild className="w-full" variant="outline">
                         <Link href="/dashboard" onClick={handleLinkClick}>Dashboard</Link>
@@ -211,7 +213,7 @@ export function Header() {
                     <Button asChild className="w-full" variant="outline">
                       <Link href="/login" onClick={handleLinkClick}>Admin Login</Link>
                     </Button>
-                )}
+                ))}
                 <Button asChild className="bg-gradient-to-r from-primary to-accent text-primary-foreground">
                   <Link href="/contact" onClick={handleLinkClick}>Book Strategy Call</Link>
                 </Button>
