@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Space_Grotesk, Inter } from 'next/font/google';
+import { FirebaseClientProvider } from '@/firebase';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -30,10 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={cn('font-body antialiased bg-background overflow-x-hidden', spaceGrotesk.variable, inter.variable)}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster />
+        <FirebaseClientProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );

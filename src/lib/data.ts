@@ -1,6 +1,15 @@
 import { Code, Bot, ShoppingCart, BarChart, HardHat, Settings, MessageSquare, LayoutTemplate, TerminalSquare, Rocket, Linkedin, Twitter } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
+export const serviceIcons: { [key: string]: LucideIcon } = {
+  Code,
+  Bot,
+  ShoppingCart,
+  BarChart,
+  HardHat,
+  Settings,
+};
+
 export type NavLink = {
   href: string;
   label: string;
@@ -17,39 +26,39 @@ export const navLinks: NavLink[] = [
 export type Service = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: string;
 };
 
 export const services: Service[] = [
   {
     title: 'Custom Software',
     description: 'Bespoke software solutions tailored to your exact business needs, from enterprise systems to specialized tools.',
-    icon: Code,
+    icon: 'Code',
   },
   {
     title: 'AI Integration',
     description: 'Leverage the power of artificial intelligence to automate processes, gain insights, and create intelligent products.',
-    icon: Bot,
+    icon: 'Bot',
   },
   {
     title: 'Shopify Development',
     description: 'Expert Shopify and Shopify Plus development for stunning, high-converting e-commerce experiences.',
-    icon: ShoppingCart,
+    icon: 'ShoppingCart',
   },
   {
     title: 'Digital Marketing',
     description: 'Data-driven digital marketing strategies including SEO, PPC, and content to grow your online presence.',
-    icon: BarChart,
+    icon: 'BarChart',
   },
   {
     title: 'Web Development',
     description: 'Building responsive, high-performance websites and web applications using the latest technologies.',
-    icon: HardHat,
+    icon: 'HardHat',
   },
   {
     title: 'IT Consulting',
     description: 'Strategic IT consulting to help you navigate technology choices and optimize your IT infrastructure.',
-    icon: Settings,
+    icon: 'Settings',
   },
 ];
 

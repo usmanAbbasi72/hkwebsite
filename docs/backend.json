@@ -6,33 +6,23 @@
       "type": "object",
       "description": "Represents a service offered by the software house.",
       "properties": {
-        "id": {
+        "title": {
           "type": "string",
-          "description": "Unique identifier for the service."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the service."
+          "description": "Title of the service."
         },
         "description": {
           "type": "string",
           "description": "Detailed description of the service."
         },
-        "imageUrl": {
+        "icon": {
           "type": "string",
-          "description": "URL of the image representing the service.",
-          "format": "uri"
-        },
-        "details": {
-          "type": "string",
-          "description": "Details about the service."
+          "description": "Name of the lucide-react icon for the service."
         }
       },
       "required": [
-        "id",
-        "name",
+        "title",
         "description",
-        "imageUrl"
+        "icon"
       ]
     },
     "Project": {
