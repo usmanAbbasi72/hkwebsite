@@ -12,7 +12,7 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { useAuth, useUser } from '@/firebase';
-import { LayoutDashboard, Briefcase, Settings, LogOut, Loader2 } from 'lucide-react';
+import { LayoutDashboard, Briefcase, Settings, LogOut, Loader2, Trophy } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
@@ -108,6 +108,14 @@ export default function DashboardLayout({
                 <Link href="/dashboard/projects">
                   <Briefcase />
                   Projects
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
+                <Link href="/dashboard/stats">
+                  <Trophy />
+                  Achievements
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

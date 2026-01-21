@@ -241,6 +241,26 @@
         "subject",
         "message"
       ]
+    },
+    "Stat": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Stat",
+      "type": "object",
+      "description": "Represents a single statistic for the 'Our Achievements' section.",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The value of the statistic (e.g., '150+')."
+        },
+        "label": {
+          "type": "string",
+          "description": "The label for the statistic (e.g., 'Projects Completed')."
+        }
+      },
+      "required": [
+        "value",
+        "label"
+      ]
     }
   },
   "auth": {
@@ -363,6 +383,22 @@
             {
               "name": "contactFormSubmissionId",
               "description": "Unique identifier for the contact form submission."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/stats/{statId}",
+        "definition": {
+          "entityName": "Stat",
+          "schema": {
+            "$ref": "#/backend/entities/Stat"
+          },
+          "description": "Stores the statistics for the 'Our Achievements' section.",
+          "params": [
+            {
+              "name": "statId",
+              "description": "Unique identifier for the statistic."
             }
           ]
         }

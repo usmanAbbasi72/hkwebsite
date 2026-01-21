@@ -1,6 +1,9 @@
 "use client";
 
-import { stats } from "@/lib/data";
+import { stats as staticStats, type Stat } from "@/lib/data";
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection } from 'firebase/firestore';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useEffect, useRef, useState } from "react";
 
 function StatCounter({ value, label }: { value: string; label: string }) {
@@ -68,11 +71,23 @@ function StatCounter({ value, label }: { value: string; label: string }) {
 }
 
 export function Stats() {
+  const firestore = useFirestore();
+  const statsCollRef = useMemoFirebase(() => collection(firestore, 'stats'), [firestore]);
+  const { data: stats, isLoading } = useCollection<Stat>(statsCollRef);
+  
+  const displayStats = (!isLoading && stats && stats.length > 0) ? stats : staticStats;
+
   return (
     <section className="py-16 md:py-24 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
+          {isLoading && Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className="text-center animate-in fade-in">
+              <Skeleton className="h-14 w-24 mx-auto mb-2" />
+              <Skeleton className="h-5 w-32 mx-auto" />
+            </div>
+          ))}
+          {!isLoading && displayStats.map((stat, index) => (
              <div key={stat.label} className="animate-in fade-in slide-in-from-bottom-10 duration-700" style={{ animationDelay: `${index * 150}ms` }}>
                 <StatCounter value={stat.value} label={stat.label} />
              </div>

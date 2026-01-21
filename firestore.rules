@@ -4,7 +4,7 @@
  *
  * @section Core Philosophy
  * This ruleset implements a dual security model tailored for a public-facing corporate website:
- * 1. Public Content Model: Collections that showcase the company's work (`services`, `projects`, `clients`, `jobListings`) are publicly readable by anyone. Write operations on this content are restricted to authenticated users, typically managed via a private dashboard.
+ * 1. Public Content Model: Collections that showcase the company's work (`services`, `projects`, `clients`, `jobListings`, `stats`) are publicly readable by anyone. Write operations on this content are restricted to authenticated users, typically managed via a private dashboard.
  * 2. Write-Only Mailbox Model: Collections that receive user submissions (`bookings`, `contactFormSubmissions`, `submissions`) are configured to allow any user (including anonymous ones) to create new documents. However, to protect user privacy and data integrity, reading, updating, or deleting these submissions is strictly prohibited. This ensures that sensitive data, once submitted, cannot be viewed or tampered with by other users.
  *
  * @section Data Structure
@@ -16,6 +16,7 @@
  * - /jobListings/{jobListingId}
  * - /jobListings/{jobListingId}/submissions/{submissionId}
  * - /contactFormSubmissions/{contactFormSubmissionId}
+ * - /stats/{statId}
  *
  * @section Key Security Decisions
  * - Admin-Only Content Management: Public content is read-only for the public, but writable for authenticated admins. This prevents unauthorized modification of the company's portfolio.
@@ -135,6 +136,18 @@ service cloud.firestore {
       allow create: if true;
       allow update: if false;
       allow delete: if false;
+    }
+    
+    /**
+     * @description Public statistics for the 'Our Achievements' section.
+     * @path /stats/{statId}
+     * @allow (get, list) Anyone can read stat documents.
+     * @allow (create, update, delete) Only authenticated users can modify stats.
+     * @principle Public content is read-only for public, writable for admins.
+     */
+    match /stats/{statId} {
+      allow get, list: if true;
+      allow create, update, delete: if request.auth != null;
     }
   }
 }

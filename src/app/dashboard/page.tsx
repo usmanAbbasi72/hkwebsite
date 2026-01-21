@@ -5,7 +5,7 @@ import { collection } from 'firebase/firestore';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Briefcase, Settings, Plus, Eye } from 'lucide-react';
+import { Briefcase, Settings, Plus, Eye, Trophy } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function DashboardPage() {
@@ -16,6 +16,9 @@ export default function DashboardPage() {
   
   const servicesCollRef = useMemoFirebase(() => collection(firestore, 'services'), [firestore]);
   const { data: services, isLoading: isLoadingServices } = useCollection(servicesCollRef);
+  
+  const statsCollRef = useMemoFirebase(() => collection(firestore, 'stats'), [firestore]);
+  const { data: stats, isLoading: isLoadingStats } = useCollection(statsCollRef);
 
   return (
     <div className="space-y-6">
@@ -24,7 +27,7 @@ export default function DashboardPage() {
         <p className="text-muted-foreground">An overview of your website's content and activity.</p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
@@ -65,7 +68,27 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-1 md:col-span-2 lg:col-span-1">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Achievements</CardTitle>
+            <Trophy className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            {isLoadingStats ? (
+               <Skeleton className="h-8 w-1/4 mt-2" />
+            ) : (
+              <div className="text-2xl font-bold">{stats?.length ?? 0}</div>
+            )}
+            <p className="text-xs text-muted-foreground">Manage your achievement stats</p>
+             <Button asChild variant="ghost" size="sm" className="mt-4 -ml-4">
+                <Link href="/dashboard/stats">
+                    Manage Achievements
+                </Link>
+             </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
            <CardHeader>
              <CardTitle className="text-sm font-medium">Quick Actions</CardTitle>
              <CardDescription className="text-xs">Add new content quickly.</CardDescription>
@@ -79,6 +102,11 @@ export default function DashboardPage() {
              <Button asChild variant="outline">
               <Link href="/dashboard/services?action=add">
                 <Plus className="mr-2 h-4 w-4" /> Add New Service
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/dashboard/stats?action=add">
+                <Plus className="mr-2 h-4 w-4" /> Add New Achievement
               </Link>
             </Button>
             <Button asChild variant="secondary">
