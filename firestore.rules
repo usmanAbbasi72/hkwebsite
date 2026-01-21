@@ -146,6 +146,7 @@ service cloud.firestore {
      * @principle Public content is read-only for public, writable for admins.
      */
     match /stats/{statId} {
+      // Public read access is granted to allow both the homepage and dashboard to display stats.
       allow get, list: if true;
       allow create, update, delete: if request.auth != null;
     }
