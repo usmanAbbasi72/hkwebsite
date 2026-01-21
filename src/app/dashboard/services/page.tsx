@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { collection, doc } from 'firebase/firestore';
 import { Plus, MoreHorizontal, Pencil, Trash2, type LucideIcon } from 'lucide-react';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
@@ -14,6 +14,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useToast } from '@/hooks/use-toast';
 import { ServiceFormDialog } from '@/components/dashboard/ServiceFormDialog';
+import { useSearchParams } from 'next/navigation';
 
 type ServiceWithId = Service & { id: string };
 
@@ -25,6 +26,13 @@ export default function ManageServicesPage() {
   const servicesCollRef = useMemoFirebase(() => collection(firestore, 'services'), [firestore]);
   const { data: services, isLoading } = useCollection<ServiceWithId>(servicesCollRef);
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('action') === 'add') {
+      handleAddNew();
+    }
+  }, [searchParams]);
 
   const handleAddNew = () => {
     setServiceToEdit(null);

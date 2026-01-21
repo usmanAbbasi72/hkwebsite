@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { collection, doc } from 'firebase/firestore';
 import { Plus, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
@@ -16,6 +16,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ProjectFormDialog } from '@/components/dashboard/ProjectFormDialog';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { useSearchParams } from 'next/navigation';
 
 type ProjectWithId = Project & { id: string };
 
@@ -27,6 +28,13 @@ export default function ManageProjectsPage() {
   const projectsCollRef = useMemoFirebase(() => collection(firestore, 'projects'), [firestore]);
   const { data: projects, isLoading } = useCollection<ProjectWithId>(projectsCollRef);
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('action') === 'add') {
+      handleAddNew();
+    }
+  }, [searchParams]);
 
   const handleAddNew = () => {
     setProjectToEdit(null);
