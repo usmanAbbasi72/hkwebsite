@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { collection, doc } from 'firebase/firestore';
-import { Plus, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
+import { Plus, MoreHorizontal, Pencil, Trash2, Eye } from 'lucide-react';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { deleteDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 import { type Project } from '@/lib/data';
@@ -17,6 +17,7 @@ import { ProjectFormDialog } from '@/components/dashboard/ProjectFormDialog';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 type ProjectWithId = Project & { id: string };
 
@@ -127,6 +128,12 @@ export default function ManageProjectsPage() {
                               <DropdownMenuItem onSelect={() => handleEdit(project)}>
                                 <Pencil className="mr-2 h-4 w-4" />
                                 Edit
+                              </DropdownMenuItem>
+                              <DropdownMenuItem asChild>
+                                <Link href={`/projects/${project.id}`} target="_blank">
+                                  <Eye className="mr-2 h-4 w-4" />
+                                  View
+                                </Link>
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
                                <AlertDialogTrigger asChild>

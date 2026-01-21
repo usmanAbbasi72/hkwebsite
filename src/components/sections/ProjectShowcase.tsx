@@ -143,7 +143,7 @@ export function ProjectShowcase() {
             {displayProjects.map((project, index) => (
               <div key={project.id} className="animate-in fade-in slide-in-from-bottom-10 duration-700" style={{ animationDelay: `${index * 150}ms` }}>
                 <Card className="group overflow-hidden relative glassmorphic-card h-96">
-                  <Link href="#" className="block h-full">
+                  <Link href={`/projects/${project.id}`} className="block h-full">
                     <Image
                       src={project.imageUrl}
                       alt={project.title}
