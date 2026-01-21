@@ -24,15 +24,15 @@ export function Footer() {
               Transforming digital visions into reality with cutting-edge development and marketing solutions.
             </p>
             <div className="flex items-center gap-4 mt-6">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              <Link href="#" className="text-muted-foreground hover:text-primary" prefetch={false}>
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              <Link href="#" className="text-muted-foreground hover:text-primary" prefetch={false}>
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              <Link href="#" className="text-muted-foreground hover:text-primary" prefetch={false}>
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
@@ -45,7 +45,7 @@ export function Footer() {
               <ul className="space-y-3">
                 {navLinks.map(link => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
                       {link.label}
                     </Link>
                   </li>
@@ -57,7 +57,7 @@ export function Footer() {
               <ul className="space-y-3">
                 {services.slice(0, 5).map(service => (
                   <li key={service.title}>
-                    <Link href="/services" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                    <Link href="/services" className="text-sm text-muted-foreground hover:text-primary">
                       {service.title}
                     </Link>
                   </li>
