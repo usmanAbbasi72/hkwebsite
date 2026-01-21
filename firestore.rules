@@ -1,0 +1,144 @@
+/**
+ * @file firestore.rules
+ * @description Security rules for the Apex Software Solutions website Firestore database.
+ *
+ * @section Core Philosophy
+ * This ruleset implements a dual security model tailored for a public-facing corporate website:
+ * 1. Public Content Model: Collections that showcase the company's work (`services`, `projects`, `clients`, `jobListings`) are publicly readable by anyone. All write operations on this content are disabled by default, assuming they will be managed by an administrative backend or a trusted process not exposed to public clients.
+ * 2. Write-Only Mailbox Model: Collections that receive user submissions (`bookings`, `contactFormSubmissions`, `submissions`) are configured to allow any user (including anonymous ones) to create new documents. However, to protect user privacy and data integrity, reading, updating, or deleting these submissions is strictly prohibited. This ensures that sensitive data, once submitted, cannot be viewed or tampered with by other users.
+ *
+ * @section Data Structure
+ * Data is organized into several top-level collections representing different aspects of the business. A subcollection for `submissions` is nested under `jobListings` to create a clear relational link between a job posting and its applications.
+ * - /services/{serviceId}
+ * - /projects/{projectId}
+ * - /clients/{clientId}
+ * - /bookings/{bookingId}
+ * - /jobListings/{jobListingId}
+ * - /jobListings/{jobListingId}/submissions/{submissionId}
+ * - /contactFormSubmissions/{contactFormSubmissionId}
+ *
+ * @section Key Security Decisions
+ * - Admin-Only Content Management: Public content is read-only. This is a secure default that prevents unauthorized modification of the company's portfolio. Content should be added or updated through a secure admin panel or server-side process with privileged access.
+ * - Privacy for Submissions: All submission collections are write-only to prevent data leakage. Users cannot list or read submissions from others.
+ * - No User Authentication Required for Submissions: The rules allow anonymous users to submit forms (bookings, contact forms, job applications) to reduce friction.
+ * - Relational Integrity: For job submissions, the rules enforce that the `jobListingId` within the submission document matches the parent `jobListing` document in the path, ensuring data consistency.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper Functions
+    
+    /**
+     * Ensures that a document being created in a subcollection contains a field
+     * that correctly references its parent document's ID.
+     * @param parentId The ID from the wildcard in the path.
+     * @param childsParentId The ID stored in the request resource data.
+     */
+    function isDataForParent(parentId, childsParentId) {
+      return parentId == childsParentId;
+    }
+
+    /**
+     * @description Public portfolio content showcasing company services.
+     * @path /services/{serviceId}
+     * @allow (get) Anyone can read a specific service document.
+     * @deny (create) An anonymous user tries to create a new service.
+     * @principle Public content is read-only; writes are restricted to a trusted environment.
+     */
+    match /services/{serviceId} {
+      allow get, list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Public portfolio content showcasing company projects.
+     * @path /projects/{projectId}
+     * @allow (get) Anyone can read a specific project document.
+     * @deny (update) An anonymous user tries to update an existing project.
+     * @principle Public content is read-only; writes are restricted to a trusted environment.
+     */
+    match /projects/{projectId} {
+      allow get, list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Public list of company clients.
+     * @path /clients/{clientId}
+     * @allow (list) Anyone can list all client documents.
+     * @deny (delete) An anonymous user tries to delete a client document.
+     * @principle Public content is read-only; writes are restricted to a trusted environment.
+     */
+    match /clients/{clientId} {
+      allow get, list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Stores consultation bookings. This is a write-only collection.
+     * @path /bookings/{bookingId}
+     * @allow (create) Anyone can create a new booking for a consultation.
+     * @deny (get) A user tries to read another user's booking details.
+     * @principle Implements a "write-only mailbox" to protect sensitive user submission data.
+     */
+    match /bookings/{bookingId} {
+      allow get: if false;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Publicly available job listings.
+     * @path /jobListings/{jobListingId}
+     * @allow (list) Anyone can list all available job listings.
+     * @deny (create) An anonymous user tries to create a new job listing.
+     * @principle Public content is read-only; writes are restricted to a trusted environment.
+     */
+    match /jobListings/{jobListingId} {
+      allow get, list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+      
+      /**
+       * @description Job applications submitted for a specific job listing.
+       * @path /jobListings/{jobListingId}/submissions/{submissionId}
+       * @allow (create) Anyone can create a new job submission, provided the `jobListingId` in the data matches the parent document.
+       * @deny (create) A user tries to create a submission with a mismatched `jobListingId`.
+       * @deny (get) A user tries to read someone else's job application.
+       * @principle Implements a "write-only mailbox" and enforces relational integrity with the parent document.
+       */
+      match /submissions/{submissionId} {
+        allow get: if false;
+        allow list: if false;
+        allow create: if isDataForParent(jobListingId, request.resource.data.jobListingId);
+        allow update: if false;
+        allow delete: if false;
+      }
+    }
+
+    /**
+     * @description Submissions from the general contact form. This is a write-only collection.
+     * @path /contactFormSubmissions/{contactFormSubmissionId}
+     * @allow (create) Anyone can send a message through the contact form.
+     * @deny (list) A user tries to list all contact messages sent by others.
+     * @principle Implements a "write-only mailbox" to protect sensitive user submission data.
+     */
+    match /contactFormSubmissions/{contactFormSubmissionId} {
+      allow get: if false;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

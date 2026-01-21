@@ -1,0 +1,390 @@
+{
+  "entities": {
+    "Service": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Service",
+      "type": "object",
+      "description": "Represents a service offered by the software house.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the service."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the service."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the service."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the image representing the service.",
+          "format": "uri"
+        },
+        "details": {
+          "type": "string",
+          "description": "Details about the service."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "imageUrl"
+      ]
+    },
+    "Project": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Project",
+      "type": "object",
+      "description": "Represents a project completed by the software house.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the project."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the project."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the project image.",
+          "format": "uri"
+        },
+        "client": {
+          "type": "string",
+          "description": "Name of the client for whom the project was done."
+        },
+        "testimonial": {
+          "type": "string",
+          "description": "Client testimonial for the project."
+        },
+        "details": {
+          "type": "string",
+          "description": "Details about the project."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "imageUrl",
+        "client"
+      ]
+    },
+    "Client": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Client",
+      "type": "object",
+      "description": "Represents a client of the software house.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the client."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the client."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the client (e.g., city, country)."
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "URL of the client's logo.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location"
+      ]
+    },
+    "Booking": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Booking",
+      "type": "object",
+      "description": "Represents a booking for a consultation.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the booking."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the person booking the consultation."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person booking the consultation.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the person booking the consultation."
+        },
+        "dateTime": {
+          "type": "string",
+          "description": "Date and time of the consultation.",
+          "format": "date-time"
+        },
+        "message": {
+          "type": "string",
+          "description": "Additional message or details provided during booking."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "dateTime"
+      ]
+    },
+    "JobListing": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JobListing",
+      "type": "object",
+      "description": "Represents a job listing on the careers page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the job listing."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the job listing."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the job listing."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the job (e.g., city, country)."
+        },
+        "requirements": {
+          "type": "string",
+          "description": "Requirements for the job listing."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "location"
+      ]
+    },
+    "Submission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Submission",
+      "type": "object",
+      "description": "Represents a job submission from jobseekers.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the job submission."
+        },
+        "jobListingId": {
+          "type": "string",
+          "description": "Reference to JobListing. (Relationship: JobListing 1:N Submission)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the person submitting the job application."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person submitting the job application.",
+          "format": "email"
+        },
+        "resumeUrl": {
+          "type": "string",
+          "description": "URL of the resume uploaded by the jobseeker.",
+          "format": "uri"
+        },
+        "coverLetter": {
+          "type": "string",
+          "description": "Cover letter submitted with the job application."
+        }
+      },
+      "required": [
+        "id",
+        "jobListingId",
+        "name",
+        "email"
+      ]
+    },
+    "ContactFormSubmission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactFormSubmission",
+      "type": "object",
+      "description": "Represents a submission from the contact form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact form submission."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the person submitting the form."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person submitting the form.",
+          "format": "email"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject of the inquiry."
+        },
+        "message": {
+          "type": "string",
+          "description": "Message content of the inquiry."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "subject",
+        "message"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/services/{serviceId}",
+        "definition": {
+          "entityName": "Service",
+          "schema": {
+            "$ref": "#/backend/entities/Service"
+          },
+          "description": "Stores services offered by the software house.",
+          "params": [
+            {
+              "name": "serviceId",
+              "description": "Unique identifier for the service."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/projects/{projectId}",
+        "definition": {
+          "entityName": "Project",
+          "schema": {
+            "$ref": "#/backend/entities/Project"
+          },
+          "description": "Stores projects completed by the software house.",
+          "params": [
+            {
+              "name": "projectId",
+              "description": "Unique identifier for the project."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/clients/{clientId}",
+        "definition": {
+          "entityName": "Client",
+          "schema": {
+            "$ref": "#/backend/entities/Client"
+          },
+          "description": "Stores clients of the software house.",
+          "params": [
+            {
+              "name": "clientId",
+              "description": "Unique identifier for the client."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/bookings/{bookingId}",
+        "definition": {
+          "entityName": "Booking",
+          "schema": {
+            "$ref": "#/backend/entities/Booking"
+          },
+          "description": "Stores consultation bookings made through the website.",
+          "params": [
+            {
+              "name": "bookingId",
+              "description": "Unique identifier for the booking."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/jobListings/{jobListingId}",
+        "definition": {
+          "entityName": "JobListing",
+          "schema": {
+            "$ref": "#/backend/entities/JobListing"
+          },
+          "description": "Stores job listings available on the careers page.",
+          "params": [
+            {
+              "name": "jobListingId",
+              "description": "Unique identifier for the job listing."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/jobListings/{jobListingId}/submissions/{submissionId}",
+        "definition": {
+          "entityName": "Submission",
+          "schema": {
+            "$ref": "#/backend/entities/Submission"
+          },
+          "description": "Stores job submissions made by jobseekers. This is a subcollection of jobListings, thus creating a JobListing 1:N Submission relationship.",
+          "params": [
+            {
+              "name": "jobListingId",
+              "description": "Unique identifier for the job listing."
+            },
+            {
+              "name": "submissionId",
+              "description": "Unique identifier for the submission."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/contactFormSubmissions/{contactFormSubmissionId}",
+        "definition": {
+          "entityName": "ContactFormSubmission",
+          "schema": {
+            "$ref": "#/backend/entities/ContactFormSubmission"
+          },
+          "description": "Stores submissions made through the contact form.",
+          "params": [
+            {
+              "name": "contactFormSubmissionId",
+              "description": "Unique identifier for the contact form submission."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to support Apex Software Solutions' website requirements, focusing on showcasing services, projects, clients, and facilitating bookings and job applications. The structure prioritizes security, scalability, and ease of management using the principles of Authorization Independence and Structural Segregation.\n\n**Authorization Independence**:  Since there's no explicit user authentication requirement beyond form submissions, we can rely on simple path-based rules and don't need complex authorization logic. All collections are globally readable/writable based on app logic.\n\n**Structural Segregation**: Each top-level collection (`services`, `projects`, `clients`, `bookings`, `jobListings`, `submissions`, `contactFormSubmissions`) holds documents of the same type, ensuring a homogeneous security posture. This simplifies security rules, as each collection can have its own specific access control rules without interference.\n\n**QAPs Support**: List operations are secured by ensuring that each collection contains only documents that should be globally listable (e.g., services, projects, clients, job listings). Submissions and contact form submissions are also directly accessible.\n\n**Invariants**: Timestamps could be added to each entity to maintain data integrity, or a status flag can be included for managing entries."
+  }
+}
