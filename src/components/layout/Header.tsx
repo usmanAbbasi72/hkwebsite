@@ -11,13 +11,18 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { LogIn, Menu, LayoutDashboard, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
+import { useAuth, useUser } from "@/firebase";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, isUserLoading } = useUser();
+  const auth = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +35,12 @@ export function Header() {
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
   };
+  
+  const handleLogout = async () => {
+    await signOut(auth);
+    handleLinkClick();
+  };
+
 
   return (
     <header
@@ -96,6 +107,28 @@ export function Header() {
           >
             <Link href="/contact">Book Strategy Call</Link>
           </Button>
+          {!isUserLoading &&
+            (user ? (
+              <>
+                <Button asChild variant="outline">
+                  <Link href="/dashboard">
+                    <LayoutDashboard />
+                    Dashboard
+                  </Link>
+                </Button>
+                <Button onClick={() => signOut(auth)} variant="ghost" size="icon" title="Logout">
+                  <LogOut />
+                  <span className="sr-only">Logout</span>
+                </Button>
+              </>
+            ) : (
+              <Button asChild variant="outline">
+                <Link href="/login">
+                  <LogIn />
+                  Login
+                </Link>
+              </Button>
+            ))}
         </div>
 
         <div className="md:hidden">
@@ -166,14 +199,23 @@ export function Header() {
                     </Link>
                   ))}
               </nav>
-              <Button
-                asChild
-                className="mt-auto bg-gradient-to-r from-primary to-accent text-primary-foreground"
-              >
-                <Link href="/contact" onClick={handleLinkClick}>
-                  Book Strategy Call
-                </Link>
-              </Button>
+              <div className="mt-auto flex flex-col gap-2">
+                {user ? (
+                    <>
+                      <Button asChild className="w-full" variant="outline">
+                        <Link href="/dashboard" onClick={handleLinkClick}>Dashboard</Link>
+                      </Button>
+                      <Button onClick={handleLogout} variant="secondary" className="w-full">Logout</Button>
+                    </>
+                ) : (
+                    <Button asChild className="w-full" variant="outline">
+                      <Link href="/login" onClick={handleLinkClick}>Admin Login</Link>
+                    </Button>
+                )}
+                <Button asChild className="bg-gradient-to-r from-primary to-accent text-primary-foreground">
+                  <Link href="/contact" onClick={handleLinkClick}>Book Strategy Call</Link>
+                </Button>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

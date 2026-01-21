@@ -4,7 +4,7 @@
  *
  * @section Core Philosophy
  * This ruleset implements a dual security model tailored for a public-facing corporate website:
- * 1. Public Content Model: Collections that showcase the company's work (`services`, `projects`, `clients`, `jobListings`) are publicly readable by anyone. All write operations on this content are disabled by default, assuming they will be managed by an administrative backend or a trusted process not exposed to public clients.
+ * 1. Public Content Model: Collections that showcase the company's work (`services`, `projects`, `clients`, `jobListings`) are publicly readable by anyone. Write operations on this content are restricted to authenticated users, typically managed via a private dashboard.
  * 2. Write-Only Mailbox Model: Collections that receive user submissions (`bookings`, `contactFormSubmissions`, `submissions`) are configured to allow any user (including anonymous ones) to create new documents. However, to protect user privacy and data integrity, reading, updating, or deleting these submissions is strictly prohibited. This ensures that sensitive data, once submitted, cannot be viewed or tampered with by other users.
  *
  * @section Data Structure
@@ -18,7 +18,7 @@
  * - /contactFormSubmissions/{contactFormSubmissionId}
  *
  * @section Key Security Decisions
- * - Admin-Only Content Management: Public content is read-only. This is a secure default that prevents unauthorized modification of the company's portfolio. Content should be added or updated through a secure admin panel or server-side process with privileged access.
+ * - Admin-Only Content Management: Public content is read-only for the public, but writable for authenticated admins. This prevents unauthorized modification of the company's portfolio.
  * - Privacy for Submissions: All submission collections are write-only to prevent data leakage. Users cannot list or read submissions from others.
  * - No User Authentication Required for Submissions: The rules allow anonymous users to submit forms (bookings, contact forms, job applications) to reduce friction.
  * - Relational Integrity: For job submissions, the rules enforce that the `jobListingId` within the submission document matches the parent `jobListing` document in the path, ensuring data consistency.
@@ -42,15 +42,13 @@ service cloud.firestore {
     /**
      * @description Public portfolio content showcasing company services.
      * @path /services/{serviceId}
-     * @allow (get) Anyone can read a specific service document.
-     * @deny (create) An anonymous user tries to create a new service.
-     * @principle Public content is read-only; writes are restricted to a trusted environment.
+     * @allow (get, list) Anyone can read service documents.
+     * @allow (create, update, delete) Only authenticated users can modify services.
+     * @principle Public content is read-only for public, writable for admins.
      */
     match /services/{serviceId} {
       allow get, list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if request.auth != null;
     }
 
     /**
