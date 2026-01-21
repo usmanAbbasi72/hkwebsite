@@ -4,7 +4,7 @@ import { ArrowRight, Briefcase } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative w-full py-10 lg:py-40 flex items-center justify-center text-center overflow-hidden">
+    <section className="relative w-full py-4 lg:py-40 flex items-center justify-center text-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-background" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
